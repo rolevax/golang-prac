@@ -1,0 +1,20 @@
+syntax = "proto3";
+package messages;
+
+enum TypeEnum {
+	CONNECT = 0;
+	SAY = 1;
+	NICK = 2;
+}
+
+message Req {
+	TypeEnum Type = 1;
+	string Who = 2;
+	string What = 3;
+}
+
+message Resp {
+	TypeEnum Type = 1;
+	string What = 2;
+}
+
