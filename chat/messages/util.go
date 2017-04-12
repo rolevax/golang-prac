@@ -25,11 +25,9 @@ func readBytes(reader *bufio.Reader) ([]byte, error) {
 		return nil, err
 	}
 	p := make([]byte, size)
-	for i := 0; i < int(size); i++ {
-		p[i], err = reader.ReadByte()
-		if err != nil {
-			return nil, err
-		}
+	_, err = io.ReadFull(reader, p)
+	if err != nil {
+		return nil, err
 	}
 	return p, nil
 }
